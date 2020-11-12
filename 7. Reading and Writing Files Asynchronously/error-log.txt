@@ -1,0 +1,2 @@
+info.txt
+hello world. I'm in info.txt file.
