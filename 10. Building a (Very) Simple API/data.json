@@ -1,0 +1,22 @@
+[
+    {
+        "id" : 1,
+        "name" : "A",
+        "dept" : "CSE"
+    },
+    {
+        "id" : 2,
+        "name" : "B",
+        "dept" : "ETE"
+    },
+    {
+        "id" : 3,
+        "name" : "C",
+        "dept" : "ARCHITECTURE"
+    },
+    {
+        "id" : 4,
+        "name" : "D",
+        "dept" : "BBA"
+    }
+]
