@@ -3,10 +3,9 @@ const { dirname } = require('path');
 const path = require('path')
 const app = express();
 
+
 app.get('/api/members', (req, res) => {
-
-    var members = [{"id":1, "name":"A"},{"id":2, "name":"B"},]
-
+    const members = require("./data/members.js")
     res.json(members);
 });
 
