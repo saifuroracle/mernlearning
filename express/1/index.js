@@ -3,6 +3,14 @@ const { dirname } = require('path');
 const path = require('path')
 const app = express();
 
+const logger = (req, res, next) => {
+    console.log('Hello')
+
+    next();
+}
+
+// init middlware
+app.use(logger);
 
 app.get('/api/members', (req, res) => {
     const members = require("./data/members.js")
