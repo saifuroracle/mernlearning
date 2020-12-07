@@ -1,10 +1,10 @@
 const express = require('express');
-const { dirname } = require('path');
 const path = require('path')
 const app = express();
+const moment = require('moment')
 
 const logger = (req, res, next) => {
-    console.log(`${req.protocol}://${req.host + req.originalUrl}`)
+    console.log(`${req.protocol}://${req.hostname + req.originalUrl+':'+moment().format('MM-DD-YYYY')}`)
 
     next();
 }
