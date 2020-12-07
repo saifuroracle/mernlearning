@@ -14,9 +14,9 @@ app.get('/api/members', (req, res) => {
 app.get('/api/members/:id', (req, res) => {
     
     res.json(
-        members.filter(function(member){
-            return member.id == req.params.id
-        })
+        members.filter(member =>
+            member.id == req.params.id
+        )
     );
 });
 
