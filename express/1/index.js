@@ -1,13 +1,7 @@
 const express = require('express');
 const path = require('path')
 const app = express();
-const moment = require('moment')
-
-const logger = (req, res, next) => {
-    console.log(`${req.protocol}://${req.hostname + req.originalUrl+':'+moment().format('MM-DD-YYYY')}`)
-
-    next();
-}
+const logger = require("./middleware/logger")
 
 // init middlware
 app.use(logger);
