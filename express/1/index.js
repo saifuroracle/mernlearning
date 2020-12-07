@@ -15,7 +15,7 @@ app.get('/api/members/:id', (req, res) => {
     
     res.json(
         members.filter(member =>
-            member.id == req.params.id
+            member.id == parseInt(req.params.id)
         )
     );
 });
