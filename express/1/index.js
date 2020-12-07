@@ -2,17 +2,24 @@ const express = require('express');
 const path = require('path')
 const app = express();
 const logger = require("./middleware/logger")
+const members = require("./data/members")
 
 // init middlware
 app.use(logger);
 
 app.get('/api/members', (req, res) => {
-    const members = require("./data/members.js")
     res.json(members);
 });
 
 app.get('/api/members/:id', (req, res) => {
-    res.send(req.params.id);
+    
+    res.json(
+        members.filter(function(member){
+            return member.id == req.params.id
+        } 
+            
+        )
+    );
 });
 
 // set static folder
