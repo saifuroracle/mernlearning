@@ -25,4 +25,9 @@ router.get('/:id', (req, res) => {
     }
 });
 
+router.post('/addMember', (req, res) => {
+    res.send(req.body);
+
+});
+
 module.exports = router

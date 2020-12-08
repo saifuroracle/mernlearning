@@ -6,6 +6,10 @@ const logger = require("./middleware/logger")
 // init middlware
 app.use(logger);
 
+// body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 // routes
 app.use('/api/members', require('./routes/api/members'));
 
