@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const members = require("../../data/members")
+var members = require("../../data/members")
 const uuid = require('uuid')
 
 router.get('/', (req, res) => {
@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
         res.json(
             members.filter(member =>
                 member.id == parseInt(req.params.id)
-            )
+            )[0]
         );
     } else {
         res.status(400).json({
@@ -42,6 +42,52 @@ router.post('/addMember', (req, res) => {
 
     members.push(member)
     res.json(members);
+});
+
+router.put('/updateMember/:id', (req, res) => {
+    const found = members.some(
+        member => 
+            member.id == parseInt(req.params.id)
+    );
+
+    if (found) {
+        const updateMember = req.body
+        members.forEach(member => {
+            if (member.id==parseInt(req.params.id)) {
+                member.name = updateMember.name ? updateMember.name : member.name;
+                member.email = updateMember.email ? updateMember.email : member.email;
+
+                 res.json({
+                     msg: "Member updated",
+                     member:member
+                 });
+            }
+        });
+    } else {
+        res.status(400).json({
+            "msg": `Member Not Found with id of ${req.params.id}!`
+        });
+    }    
+});
+
+
+router.delete('/deleteMember/:id', (req, res) => {
+    const found = members.some(
+        member => 
+            member.id == parseInt(req.params.id)
+    );
+
+    if (found) {
+        members = members.filter(member => member.id!=parseInt(req.params.id))
+        res.json({
+            "msg": "Member deleted",
+            "members": members
+        });
+    } else {
+        res.status(400).json({
+            "msg": `Member Not Found with id of ${req.params.id}!`
+        });
+    }
 });
 
 module.exports = router
