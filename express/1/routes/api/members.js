@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const members = require("../../data/members")
+const uuid = require('uuid')
 
 router.get('/', (req, res) => {
     res.json(members);
@@ -26,8 +27,21 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/addMember', (req, res) => {
-    res.send(req.body);
+    // res.send(req.body);
+    const member = {
+        id : uuid.v4(),
+        name : req.body.name,
+        email : req.body.email
+    }
 
+    if ( !member.name || !member.email) {
+        return res.status(400).json({
+            msg: "please include name and email"
+        });
+    } 
+
+    members.push(member)
+    res.json(members);
 });
 
 module.exports = router
