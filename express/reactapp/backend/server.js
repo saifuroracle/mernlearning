@@ -21,6 +21,8 @@ connection.once('open', () => {
     console.log('Mongodb successfully connected!'); 
 })
 
+// routes
+app.use('/api/uoms', require('./routes/uoms'));
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
