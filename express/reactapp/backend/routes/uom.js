@@ -13,7 +13,7 @@ router.route('/:id').get((req, res) => {
     .catch(err => res.status(400).json("Error: "+ err) ) 
  });
 
-router.route('/add').post((req, res) => {
+router.route('/').post((req, res) => {
     const uom = req.body.uom;
     const newUom = new Uom({uom})
 

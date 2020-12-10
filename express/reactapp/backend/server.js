@@ -22,7 +22,7 @@ connection.once('open', () => {
 })
 
 // routes
-app.use('/api/uoms', require('./routes/uoms'));
+app.use('/api/uoms', require('./routes/uom'));
 
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
