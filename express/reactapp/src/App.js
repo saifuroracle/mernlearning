@@ -2,9 +2,14 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {BrowserRouter as Router, Route} from "react-router-dom"
 
+// components
 import Navbar from './components/navbar.component'
 import Contactus from './components/contactus.component'
 import Aboutus from './components/about.component'
+
+// wizards 
+import Accordion from './components/wizards/accordion.component'
+
 
 function App() {
   return (
@@ -13,6 +18,7 @@ function App() {
         <Route path="/contactus" exact component={Contactus} />
         <Route path="/aboutus" exact component={Aboutus} />
     </Router>
+
   );
 }
 
