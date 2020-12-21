@@ -7,9 +7,6 @@ import Navbar from './components/navbar.component'
 import Contactus from './components/contactus.component'
 import Aboutus from './components/about.component'
 
-// wizards 
-import Accordion from './components/wizards/accordion.component'
-
 
 function App() {
   return (
