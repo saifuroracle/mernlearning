@@ -1,0 +1,92 @@
+db.dropDatabase("laravelvuecrud") ;
+
+use laravelvuecrud ;
+
+db.createCollection('uom');
+
+db.uom.remove({});
+
+db.uom.insertOne({
+  "_id": 1,
+  "uom": "KG"
+});
+
+db.uom.insert(
+  [
+    {
+      "_id": 2,
+      "uom": "G"
+    },
+    {
+      "_id": 3,
+      "uom": "L"
+    },
+    {
+      "_id": 4,
+      "uom": "M"
+    },
+    {
+      "_id": 5,
+      "uom": "KM"
+    },
+    {
+       "_id": 6,
+       "uom": "PCS"
+     }
+  ]
+);
+
+
+db.createCollection("product");
+
+db.product.remove({});
+
+db.product.insert(
+  [
+    {
+      "_id": 1,
+      "name": "Rice",
+      "uomId": 1,
+      "created_at": new Timestamp()
+    },
+    {
+      "_id": 2,
+      "name": "Beef",
+      "uomId": 1,
+      "created_at": new Timestamp()
+    },
+    {
+      "_id": 3,
+      "name": "Soyabeen Oil",
+      "uomId": 3,
+      "created_at": new Timestamp()
+    },
+  ]
+);
+
+
+
+db.product.aggregate(
+    { $project : { name: true } }
+);
+
+
+db.product.aggregate(
+    { 
+      $project : { 
+        name: 1, 
+
+        year: { $year: "$created_at" },
+        month: { $month: "$created_at" },
+        day: { $dayOfMonth: "$created_at" },
+        hour: { $hour: "$created_at" },
+        minutes: { $minute: "$created_at" },
+        seconds: { $second: "$created_at" },
+        milliseconds: { $millisecond: "$created_at" },
+        dayOfYear: { $dayOfYear: "$created_at" },
+        dayOfWeek: { $dayOfWeek: "$created_at" },
+        week: { $week: "$created_at" }
+      } 
+    }
+);
+

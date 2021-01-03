@@ -1,0 +1,51 @@
+db.employee.aggregate([
+    {
+        $lookup:
+        {     
+            from: "skill",
+            localField: "skill_ids",
+            foreignField: "_id",
+            as: "skills"
+        }
+    }
+]).pretty()
+
+
+db.employee.aggregate([
+    {
+        $lookup:
+        {     
+            from: "skill",
+            localField: "skill_ids",
+            foreignField: "_id",
+            as: "skills"
+        }
+    },
+    {
+        $match: {
+            "name": "John Doe"
+        }
+    }
+]).pretty()
+
+
+
+db.employee.aggregate([
+    {
+        $lookup:
+        {     
+            from: "skill",
+            localField: "skill_ids",
+            foreignField: "_id",
+            as: "skills"
+        }
+    },
+    {
+        $match: {
+            "name": {
+                $regex: /John/
+            }
+        }
+    }
+]).pretty()
+
