@@ -1,0 +1,60 @@
+db.tutorial.aggregate([
+    {
+      $lookup:
+        {     
+          from: "tag",
+          localField: "tag_ids",
+          foreignField: "_id",
+          as: "tags"
+        }
+   }
+  ]).pretty()
+
+
+
+  db.tag.aggregate([
+    {
+      $lookup:
+        {     
+          from: "tutorial",
+          localField: "_id",
+          foreignField: "tag_ids",
+          as: "tutorials"
+        }
+   }
+  ]).pretty()
+
+
+
+  db.user.aggregate([
+  {
+    $lookup:
+      {     
+        from: "role",
+        localField: "_id",
+        foreignField: "user_ids",
+        as: "roles"
+      }
+ }
+]).pretty()
+
+  
+
+
+db.role.aggregate([
+  {
+    $lookup:
+      {     
+        from: "user",
+        localField: "user_ids",
+        foreignField: "_id",
+        as: "users"
+      }
+ }
+]).pretty()
+
+  
+
+
+
+
